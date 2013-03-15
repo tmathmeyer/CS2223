@@ -1,6 +1,18 @@
 ALGORITMS 2223 ASSIGNMENT 1 REPORT
 
-1. 	Single Loop: 1.89864E-4
+#========================================#
+# source and compiled files are provided #
+#========================================#
+
+
+1. 	compilation:
+		javac Loops.java
+	execution:
+		java Loops 1
+		java Loops 2
+		java Loops 3
+
+	Single Loop: 1.89864E-4
 	Double Loop: 0.046412057
 	Triple Loop: 95.469213534
 
@@ -49,3 +61,16 @@ ALGORITMS 2223 ASSIGNMENT 1 REPORT
 		n^2:
 			n^2 - 324
 			100n^2 - 6n
+
+
+4.	compilation:
+		javac FunkyBinarySearch.java
+	execution:
+		java FunkyBinarySearch <integer arg>
+
+	best case time complexity:
+		the element is found on the first try
+		O(1)
+	worst case time complexity:
+		the element is greater than 200
+		O(log_3/2(n)) <= log base 3/2 of n <= ln(N)/ln(1.5)
