@@ -2,6 +2,8 @@ ALGORITMS 2223 ASSIGNMENT 1 REPORT
 
 #========================================#
 # source and compiled files are provided #
+#  all assignment files can be found at: #
+# https://github.com/tmathmeyer/wpi-algo #
 #========================================#
 
 
