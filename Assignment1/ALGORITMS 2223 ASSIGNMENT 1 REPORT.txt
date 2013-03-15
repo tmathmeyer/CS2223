@@ -1,0 +1,51 @@
+ALGORITMS 2223 ASSIGNMENT 1 REPORT
+
+1. 	Single Loop: 1.89864E-4
+	Double Loop: 0.046412057
+	Triple Loop: 95.469213534
+
+2. 	func_linsort(int[] data) # this modifies the data array in place
+		newArr[] = new int[1000]
+		output[] = new int[100]
+		for(i = 1; i < 100; i++)
+			newArr[data[i]]++
+		total = 0
+		for(i = 1; i < 1000; i++)
+			oldCount = newArr[i]
+			data[total] = i
+			total = total + oldCount
+
+	Worst-Case scenario: 	all the same value
+							running time:
+								O(N+M), where N is length of array, and M is range of values
+								LINEAR TIME
+							space complexity:
+								M, because there needs to be only one aditional array with size equal to the range created
+	Best-Case scenario:		already sorted
+							running time:
+								O(N+M), where N is length of array and M is range of values
+								LINEAR TIME
+							space complexity:
+								M, because there needs to be only one aditional array with size equal to the range created
+
+	
+3.	1/n
+	log_2(n)
+	12 * sqrt(n)
+	50 * n^.5
+	n^.51
+	2^32 * n
+	n * log_2(n)
+	n^2 - 324
+	100n^2 + 6n
+	2n^3
+	n^(log_2(n))
+	3^n
+
+	same ordered functions:
+		sqrt(n):
+			12 * sqrt(n)
+			50 * n^.5
+		n^2:
+			n^2 - 324
+			100n^2 - 6n
