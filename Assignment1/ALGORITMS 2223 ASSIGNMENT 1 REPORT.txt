@@ -24,9 +24,11 @@ ALGORITMS 2223 ASSIGNMENT 1 REPORT
 		for(i = 1; i < 100; i++)
 			newArr[data[i]]++
 		total = 0
-		for(i = 1; i < 1000; i++)
+		last = 0
+		for(i = 0; i < 1000; i++)
 			oldCount = newArr[i]
-			data[total] = i
+			for(j = 0; j < oldCount; j++)
+				data[total+j] = last
 			total = total + oldCount
 
 	Worst-Case scenario: 	all the same value
