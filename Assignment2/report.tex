@@ -1,0 +1,192 @@
+\documentclass{article}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{courier}
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\linespread{1.1}
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+\setlength\parindent{0pt}
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+\lstloadlanguages{Perl}
+%see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\newcommand{\enterProblemHeader}[1]{
+	\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+\newcommand{\exitProblemHeader}[1]{
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1}{}\nobreak
+}
+\setcounter{secnumdepth}{0}
+\newcounter{homeworkProblemCounter}
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Question \arabic{homeworkProblemCounter}]{
+	\stepcounter{homeworkProblemCounter}
+	\renewcommand{\homeworkProblemName}{#1}
+	\section{\homeworkProblemName}
+	\enterProblemHeader{\homeworkProblemName}
+}{
+	\exitProblemHeader{\homeworkProblemName}
+}
+\newcommand{\problemAnswer}[1]{ argument
+	\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}}
+}
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{
+	\renewcommand{\homeworkSectionName}{#1}
+	\subsection{\homeworkSectionName}
+	\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}
+}{
+	\enterProblemHeader{\homeworkProblemName}
+}
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \#2 Report}
+\newcommand{\hmwkDueDate}{Monday,\ January\ 1,\ 2012}
+\newcommand{\hmwkClass}{Algorithms\ 2223}
+\newcommand{\hmwkClassTime}{2:00pm}
+\newcommand{\hmwkClassInstructor}{Eltibakh}
+\newcommand{\hmwkAuthorName}{Ted Meyer}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+\vspace{3in}
+}
+\author{\textbf{\hmwkAuthorName}}
+\begin{document}
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+%\setcounter{tocdepth}{1}
+\newpage
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+to run:\\
+\begin{enumerate}
+\item \itab{merge sort:} \tab{java Main 1}\\
+\item \itab{quick sort:} \tab{java Main 2}\\
+\end{enumerate}
+
+\end{homeworkProblem}
+\clearpage
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+
+\subsection{Master Theorum}
+\[T(n) = aT(\frac{n}{b}) + n^c\]
+\[case 1: f(n) = \theta(n^c)\quad where\quad c < log_b(a)\]
+\[T(n) = \theta(n^{log_b(a)})\]
+\[case 2: f(n) = \theta(n^c)\quad where\quad c = log_b(a)\]
+\[T(n) = \theta(n^{c}log(n))\]
+
+\[case 3: f(n) = \theta(n^c)\quad where\quad c > log_b(a)\]
+\[T(n) = \theta(n^c)\]
+\subsection{Problem 1}
+\[T(n) = T(\frac{n}{2}) + O(1)\]
+\[a=1,\;b=2,\;c=0\]
+\[c=log_b(a)\]
+
+\[T(n)=O(log(n))\]
+\[binary\:search\]
+
+\subsection{Problem 2}
+\[T(n) = 2T(\frac{n}{2}) + O(n)\]
+\[a=2,\;b=2,\;c=1\]
+\[c=log_b(a)\]
+
+\[T(n)=O(n * log(n))\]
+\[merge\:sort\]
+
+\subsection{Problem 3}
+\[T(n) = 4T(\frac{n}{2}) + O(n)\]
+\[a=4,\;b=2,\;c=1\]
+\[c<log_b(a)\]
+
+\[T(n)=O(n^{2})\]
+
+\subsection{Problem 4}
+\[T(n) = 7T(\frac{n}{2}) + O(n^2)\]
+\[a=7,\;b=2,\;c=2\]
+\[c<log_b(a)\]
+
+\[T(n)=O(n^{2.81})\]
+
+
+
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\[T(n) = T(n-1) + O(n+log_2(n))\]
+\[Master\;Theorum:\]
+\[this\;recurrence\;is\;not\;applicable\;to\;the\;master\;theorum\]
+\[Tree\;Based\;Method\]
+\[n\;elements\qquad n+log_2(n)\;operations\]
+\[n-1\;elements\qquad n-1+log_2(n-1)\;operations\]
+\[n-2\;elements\qquad n-2+log_2(n-2)\;operations\]
+\[n-3\;elements\qquad n-3+log_2(n-3)\;operations\]
+\[...\]
+\[1\;element\qquad 1\;operation\]
+
+\[summed\;together\;this\;makes\;n\;lines\;of\;n+log_2(n)\;operations\;each\]
+\[n*(n+log_2(n)) = n^2 + nlog_2(n)\]
+\[O(n^2 + nlog_2(n)) = O(n^2)\]
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
