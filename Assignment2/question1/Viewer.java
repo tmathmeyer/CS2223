@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-
+/*
+ * This Viewer class is produced by Ted Meyer for WPI CS 2223 (Algorithms)
+ * This Viewer class is free to use by any student in the class provided they give attribution
+ *
+ * This code is provided for free on github.com/tmathmeyer/wpi-algo
+ */
 public class Viewer extends JPanel{
 	int[] values = new int[0];
 	JFrame f = new JFrame();

@@ -31,7 +31,7 @@ public class BubbleSort implements Sort{
 					swap(i, i+1);
 					swapped = true;
 					v.set(values);
-					pause();
+					//pause();
 				}
 			}                
 		}
