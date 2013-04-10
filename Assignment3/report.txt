@@ -1,0 +1,93 @@
+1)
+	int max findCoords(int[] list)
+		int[] maxTemp = new int[list.length]
+		maxTemp[0] = list[0];
+		for(int i = 1; i < list.length; i++)
+			if (maxTemp[i-1]+list[i] > list[i])
+				maxTemp[i] = maxTemp[i-1]+list[i]
+			else
+				maxTemp[i] = list[i]
+		int max = 0
+		for(int i = 0; i < list.length; i++)
+			if (maxTemp[i] > max)
+				max = maxTemp[i]
+		return max
+
+
+
+	this is pseudocode because
+
+
+
+
+2)
+	2.1) option C is wrong, because it progresses from 911 -> 240 -> 912, implying that 912 is smaller than 911, which is clearly not true
+
+	2.2)
+		
+		int getGreatestNodeID(BinaryTree bt)
+			getNodeValue(bt.topNode)
+			MaxHeapift(bt)
+			return bt.topNode.ID
+
+		int getNodeValue(BinaryTreeNode bt)
+			bt.value = bt.left.getNodeValue() + bt.right.getNodeValue() + h.value
+			return bt.value
+
+		the time complexity of this algorithm is n*log_2(n)
+			the first part of te algorithm runs in O(n), because it hits every element in the tree exactly once
+			the second part of the algorithm is O(nlogn) because it has to turn the binary tree which now is most likely not a heap into a maxHeap
+			the last part is O(1) because there is only one operation to get the maximum value from a maxHeap
+
+		
+	2.3)
+		 a) True
+		 b) pre-order: 10,  3,   5,   4,   15,   7,   8,   2,   9,   20 
+		 	in-order:  4,   5,   3,   15,   10,   2,    8,   7,    9,   20
+
+		 									10
+		 								 __/  \_
+		 								/       \
+		 							   3         7
+		 						      / \       / \
+		 							 5	 15    8   9
+		 							/         /     \
+		 						   4         2       20
+
+3)
+	a)
+		tree:						216
+								   /   \
+								  116  100:C
+								 /   \
+								66   50:D
+							   /  \______
+							  /          \ 
+							 26          40
+							/  \        /  \
+						   16  10:E  20:B  20:F
+						  /  \
+						 8   8:H
+						/ \
+					  3:A  5:G
+		Encoding:
+			A: 000000
+			B: 0010
+			C: 1
+			D: 01
+			E: 0001
+			F: 0011
+			G: 000001
+			H: 00001
+
+4) pg 422
+	16.1-2) This is a greedy algorithm because it is in fact running the original problem exactly the same way, but in reverse. Therefore, if the original algorithm is greedy, and also correct, this one must be as well.
+
+	16.1-3) One example of a schedule that does not produce a maximum size-set of mutually compatable activities when using the first algorithm would be a schedule with three events:
+	9:00AM - 4:00PM
+	9:30AM - 11:30AM
+	12:00PM - 3:00PM
+	this algorithm would give us a set of just one event, the first one, even though the largst set of mutually compatable events contains just the last two events.
+
+
+	
