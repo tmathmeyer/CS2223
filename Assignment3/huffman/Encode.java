@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.ObjectOutputStream;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class Encode{
 
@@ -45,11 +46,27 @@ public class Encode{
 	public void writeToFile(String fileName) throws Exception{
 		File file = new File(fileName);
 		if (!file.exists())file.createNewFile();
-		FileWriter fw = new FileWriter(file.getAbsoluteFile());
-		BufferedWriter bw = new BufferedWriter(fw);
+		String toByte = "";
 		for(String s : fileAsChars)
-			bw.write(this.huffmanHash.get(s));
-		bw.close();
+			toByte += this.huffmanHash.get(s);
+		OutputStream out = new FileOutputStream(fileName);
+		out.write(fromBinary(toByte));
+		out.close();
+	}
+
+
+
+
+	private byte[] fromBinary(String s){
+	    int sLen = s.length();
+	    byte[] toReturn = new byte[(sLen + Byte.SIZE - 1) / Byte.SIZE];
+	    char c;
+	    for( int i = 0; i < sLen; i++ )
+	        if( (c = s.charAt(i)) == '1' )
+	            toReturn[i / Byte.SIZE] = (byte) (toReturn[i / Byte.SIZE] | (0x80 >>> (i % Byte.SIZE)));
+	        else if ( c != '0' )
+	            throw new IllegalArgumentException();
+	    return toReturn;
 	}
 
 	public void writeHuffmanHash() throws Exception{

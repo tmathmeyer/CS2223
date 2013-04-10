@@ -80,6 +80,10 @@
 			G: 000001
 			H: 00001
 
+	b) to run the huffman programming assignment:
+		compressing: 	java Huffman encode <input file> <output file>
+		decompressing:	java Huffman decode <input file> <output file>
+
 4) pg 422
 	16.1-2) This is a greedy algorithm because it is in fact running the original problem exactly the same way, but in reverse. Therefore, if the original algorithm is greedy, and also correct, this one must be as well.
 
