@@ -1,21 +1,21 @@
-public class EmptyAVLTree implements AVL{
+public class EmptyAVLTree<E extends Comparable<E>> implements AVL<E>{
 	public int getNode(){
 		return 0;
 	}
-	public AVL add(int i){
-		return new AVLTree(i);
+	public AVL<E> add(E i){
+		return new AVLTree<E>(i);
 	}
-	public AVL remove(int i){
+	public AVL<E> remove(E i){
 		return this;
 	}
 
 	public boolean isEmpty(){
 		return true;
 	}
-	public AVL getLeft(){
+	public AVL<E> getLeft(){
 		return this;
 	}
-	public AVL getRight(){
+	public AVL<E> getRight(){
 		return this;
 	}
 	public boolean areChildrenEmpty(){
@@ -27,7 +27,7 @@ public class EmptyAVLTree implements AVL{
 	public int getBalance(){
 		return 0;
 	}
-	public AVL balance(){
+	public AVL<E> balance(){
 		return this;
 	}
 	public void print(int depth){

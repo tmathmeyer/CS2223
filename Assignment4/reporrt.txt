@@ -1,0 +1,209 @@
+Ted Meyer
+Algorithms 2223 report
+due 4/26/2013
++===================================+
+|      All code is published to     |
+|  github.com/tmathmeyer/wpi-algo   |
+|                                   |
+|   please use a fixed width font   |
++===================================+
+
+
+1)
+	a)
+		// all N values start at 0 except for the first element, which is at one.
+		MIN_DISTANCE(graph g, node start):
+			start value <- 1
+			MIN_HEAP mh = MAX_HEAP(start)
+			while(mh not empty)
+				node top = mh.removeMaximum()
+				for each connected node N to top:
+					if (N is not visited):
+						add N to mh
+						mark N as visited
+					if (N value < top value * edgeWeight):
+						N value <-- top value + edgeWeight
+
+	b)
+		The algorithm performs log(V) operations V times, as shown in the second if, and an additional E operations as shown in the first if, for a combined O((e+v) * log(v))
+
+	c)
+		U:  U  -  1
+		X:  U -> X  -  0.2
+		V:  U -> X -> V  -  .18
+		T:  U -> X -> V -> T  -  .09
+		W:  U -> X -> V -> T -> W  -  .081
+
+2)
+	A)
+		Demonstrate what happens when we insert the keys 5; 28; 19; 15; 20; 33; 12; 17; 10
+		into a hash table with collisions resolved by chaining. Let the table have 9 slots,
+		and let the hash function be h.k/ D k mod 9.
+
+		+===+===+
+		| 0 | \ | 
+		+===+===+    +===+===+===+===+
+		| 1 |   | -> |10 |19 |28 | \ |
+		+===+===+    +===+===+===+===+
+		| 2 |20 |
+		+===+===+
+		| 3 |12 |
+		+===+===+
+		| 4 | \ |
+		+===+===+
+		| 5 | 5 |
+		+===+===+    +===+===+===+
+		| 6 |   | -> |15 |33 | \ |
+		+===+===+    +===+===+===+
+		| 7 | \ |
+		+===+===+
+		| 8 |17 |
+		+===+===+
+
+	B)
+		AVLTree HASHED_DATA
+		for each String S in List
+			HASHED_DATA add( hash(S) )
+
+		int hash(String s)
+			return sum(ascii(s)) % PRIME_NUMBER < .3*NumberOfStrings
+
+		boolean Search(String s)
+			if (HASHED_DATA has s)
+				return true
+
+	C)
+		the pre-processing stage runs in a loop N times for each string, and in each loop does:
+			X operations, where X is the length of the string,
+			log(n) operations
+		for a sum of O(nX + nlog(n))
+
+		Since the search uses a binary tree, there is on average log(n) attempts to find the correct hash of the node,
+		and once the hash is found, it is more than highly likely that there are no chained elements in that node, making the runtime O(log(n))
+		
+
+3)
+	A)
+		//min heap is sorted based on length of the rides
+		GET_MOST_RIDES(list(rides) r):
+			hashMap(rides) alexs_choice = emptyHashMap
+			MinHeap(rides) R <= r
+			for each minimum ride M in R:
+				remove M from R
+				if (M does not conflict with any ride in alexs_choice):
+					add M to alexs_choice
+
+		Time complexity:
+			list > heap : O(n) [provided this is done with a binary heap method]
+			first loop iterate over all N elements and does:
+				remove M from R : O(log(n))
+				search alexs_choice : O(1)
+				possibly add M to alexs_choice : O(1)
+			which gives us : O(2n + nlog(n)), 
+			or : O(nlog(n))
+
+		Space Complexity:
+			O(n) for storing the hashmap
+			the minHeap can be created in the list provided without the need for creating a new one.
+
+
+	B)
+		Length of an event is represended by length of bar,
+		tickets of an event are listed as T[n] where n is ticket count
+		start time is represented by where the event starts.
+		this arrangement is largely based on tabs and spaces, so please use a text editor that is capable of displaying proper allignment. (This was created in SublimeText, so it certainly works)
+
+		+=T[1]=+  +=T[1]=+  +=T[1]=+  +=T[1]=+  +=T[1]=+  +=T[1]=+
+			+==================T[300]================+
+
+		while alex's choice would choose the rides that are all one ticket, Mark would chose the 300 ticket ride.
+
+	C)
+		We will assume that each ride starts and ends on the hour, and that the first ride starts at Hour 0 and the last ride ends at hour L
+
+		function list(rides) MARKS_RIDES(list(rides) all):
+			list(rides) result = empty list
+			int[] maxTickets = new int[L] //all elements are 0
+			int BestCurrentEndTime = 0
+			//possibly sort list all here, may be sorted, may not be.
+			for each ride r in list all:
+				int newtotalvalue = maxTickets[r.startTime] + r.tickets
+				if (newtotalvalue > maxTickets[bestCurrentEndTime]):
+					maxTickets[r.endTime] = newTotalValue
+					result add r
+					BestCurrentEndTime = r.endTime
+			return result
+
+		Time complexity:
+			possible sort : O(nlog(n))
+			loop over n elements :
+				single computation O(1)
+
+			overall runtime :
+				with sort : O(nlog(n))
+				without sort : O(n)
+
+		Space Complexity:
+			O(n) for storing the maxTickets array
+
+
+
+
+
+
+4)
+	The code for generating this table is provided as Dist.java
+	compile as javac Dist.java
+	run as java Dist [from string] [to string]
+		ie. i used: java Dist GTAATCATTTAA GATTACTGATA 
+		note: you must use capital letters!
+
+							 to
+	+===+===+===+===+===+===+===+===+===+===+===+===+===+
+	|   |   | G | A | T | T | A | C | T | G | A | T | A |
+	+===+===+===+===+===+===+===+===+===+===+===+===+===+
+	|   | 0 | 2 | 4 | 6 | 8 |10 |12 |14 |16 |18 |20 |22 |
+	+===+===#===+===+===+===+===+===+===+===+===+===+===+
+	| G | 2 | 0 | 2 | 4 | 6 | 8 |10 |12 |14 |16 |18 |20 |
+	+===+===+=#=+===+===+===+===+===+===+===+===+===+===+
+	| T | 4 | 2 | 2 | 2 | 4 | 6 | 8 |10 |12 |14 |16 |18 |
+	+===+===+=#=+===+===+===+===+===+===+===+===+===+===+
+	| A | 6 | 4 | 2 | 4 | 4 | 4 | 6 | 8 |10 |12 |14 |16 |
+	+===+===+===#===+===+===+===+===+===+===+===+===+===+
+f	| A | 8 | 6 | 4 | 4 | 6 | 4 | 6 | 8 |10 |10 |12 |14 |
+r	+===+===+===+===#===+===+===+===+===+===+===+===+===+
+o	| T |10 | 8 | 6 | 4 | 4 | 6 | 6 | 6 | 8 |10 |10 |12 |
+m	+===+===+===+===+===#===+===+===+===+===+===+===+===+
+	| C |12 |10 | 8 | 6 | 6 | 6 | 6 | 8 | 7 | 9 |11 |12 |
+	+===+===+===+===+===+===#===+===+===+===+===+===+===+
+	| A |14 |12 |10 | 8 | 8 | 6 | 8 | 8 | 9 | 7 | 9 |11 |
+	+===+===+===+===+===+===+===#===+===+===+===+===+===+
+	| T |16 |14 |12 |10 | 8 | 8 | 8 | 8 |10 | 9 | 7 | 9 |
+	+===+===+===+===+===+===+===+===#===+===+===+===+===+
+	| T |18 |16 |14 |12 |10 |10 |10 | 8 |10 |11 | 9 | 9 |
+	+===+===+===+===+===+===+===+===+===#===+===+===+===+
+	| T |20 |18 |16 |14 |12 |12 |12 |10 |10 |12 |11 |11 |
+	+===+===+===+===+===+===+===+===+===+===#===+===+===+
+	| A |22 |20 |18 |16 |14 |12 |14 |12 |12 |10 #12 |11 |
+	+===+===+===+===+===+===+===+===+===+===+===+===#===+
+	| A |24 |22 |20 |18 |16 |14 |14 |14 |14 |12 |12 |12 |
+	+===+===+===+===+===+===+===+===+===+===+===+===+===+
+
+	#'s are the followed paths
+	a diagonal # means shift, horizontal means insert, and vertical means delete
+
+	The smallest edit distance is 12
+	and follows the path:
+		align
+		delete
+		delete
+		align
+		align
+		align
+		align
+		align
+		align
+		align
+		align
+		insert
+		align

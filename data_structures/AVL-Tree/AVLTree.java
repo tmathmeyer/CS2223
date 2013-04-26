@@ -1,41 +1,41 @@
-public class AVLTree implements AVL{
-	int node;
-	public AVL left = new EmptyAVLTree();
-	public AVL right = new EmptyAVLTree();
+public class AVLTree<E extends Comparable<E>> implements AVL<E>{
+	E node;
+	public AVL left = new EmptyAVLTree<E>();
+	public AVL right = new EmptyAVLTree<E>();
 
-	public AVLTree(int i){
+	public AVLTree(E i){
 		this.node = i;
 	}
 
-	public int getNode(){
+	public E getNode(){
 		return node;
 	}
-	public AVL add(int i){
-		if (i >= this.getNode())
+	public AVL<E> add(E i){
+		if (i.compareTo(this.getNode()) > 0)
 			this.right = this.right.add(i);
 		else
 			this.left = this.left.add(i);
 		return this.balance();
 	}
-	public AVL remove(int i){
-		if (this.getNode == i){
-			if (this.getLeft().isEmpty() &&) return this.getRight();
+	public AVL<E> remove(E i){
+		if (this.getNode().equals(i)){
+			if (this.getLeft().isEmpty()) return this.getRight();
 			if (this.getRight().isEmpty()) return this.getLeft();
 			
 		}
-		if (this.getNote() > i)
+		if (this.getNode().compareTo(i) > 0)
 			this.right = this.getRight().remove(i);
-		if (this.getNote() > i)
+		if (this.getNode().compareTo(i) < 0)
 			this.left = this.getLeft().remove(i);
 		return this;
 	}
 	public boolean isEmpty(){
 		return false;
 	}
-	public AVL getLeft(){
+	public AVL<E> getLeft(){
 		return this.left;
 	}
-	public AVL getRight(){
+	public AVL<E> getRight(){
 		return this.right;
 	}
 	public boolean areChildrenEmpty(){
@@ -51,17 +51,17 @@ public class AVLTree implements AVL{
 		int b = this.getRight().depth();
 		return a-b;
 	}
-	public AVL balance(){
+	public AVL<E> balance(){
 		int bal = this.getBalance();
 		if (Math.abs(bal) < 2)return this;
 
 		if (bal > 1){
-			AVLTree newTop = (AVLTree) this.getLeft();
+			AVLTree<E> newTop = (AVLTree<E>) this.getLeft();
 			this.left = newTop.getRight();
 			newTop.right = this;
 			return newTop;
 		}
-		AVLTree newTop = (AVLTree) this.getRight();
+		AVLTree<E> newTop = (AVLTree<E>) this.getRight();
 		this.right = newTop.getLeft();
 		newTop.left = this;
 		return newTop;
@@ -69,7 +69,7 @@ public class AVLTree implements AVL{
 
 	public void print(int depth){
 		for(int i = 0; i < depth; i++)System.out.print("  ");
-		System.out.println(this.getNode());
+		System.out.println(this.getNode().toString());
 		this.getLeft().print(depth+1);
 		this.getRight().print(depth+1);
 	}

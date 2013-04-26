@@ -1,14 +1,13 @@
-public interface AVL{
-	public int getNode();
-	public AVL add(int i);
-	public AVL remove(int i);
+public interface AVL<E extends Comparable<E>>{
+	public E getNode();
+	public AVL<E> add(E i);
+	public AVL<E> remove(E i);
 	public boolean isEmpty();
-	public AVL getLeft();
-	public AVL getRight();
+	public AVL<E> getLeft();
+	public AVL<E> getRight();
 	public boolean areChildrenEmpty();
 	public int depth();
 	public int getBalance();
-	public AVL balance();
-
+	public AVL<E> balance();
 	public void print(int depth);
 }
