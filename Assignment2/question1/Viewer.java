@@ -21,7 +21,7 @@ public class Viewer extends JPanel{
 
 	public void paintComponent(Graphics g){
 		g.setColor(Color.BLACK);
-		g.fillRect(0,0,500,500);
+		g.fillRect(0,0,100+values.length*2,500);
 
 		for(int i = 0; i < values.length; i++){
 			int val = values[i];
@@ -34,6 +34,8 @@ public class Viewer extends JPanel{
 	public void set(int[] v){
 		this.values = v;
 		this.repaint();
+		f.setPreferredSize(new Dimension(100+values.length*2, 500));
+		f.pack();
 		f.repaint();
 		f.revalidate();
 		f.setVisible(true);

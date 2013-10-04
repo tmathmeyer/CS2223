@@ -15,7 +15,7 @@ public class HeapSort implements Sort{
 	}
 	public void pause(){
 		try{
-	    	//Thread.sleep(10);
+	    	Thread.sleep(10);
 	    } catch(Exception e) {} //this slows down the animation so you can acutally see it
 	}
 
